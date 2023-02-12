@@ -5,7 +5,7 @@ import { Header } from './components/Header';
 import { AddTasks } from './components/AddTasks';
 import { Tasks } from './components/Tasks';
 
-function App() {
+export function App() {
   return (
     <div>
       <Header />
@@ -20,5 +20,3 @@ function App() {
     </div>
   )
 }
-
-export default App
