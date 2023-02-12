@@ -49,3 +49,13 @@
 .createTask button:hover {
     background-color: var(--blue);
 }
+
+@media (max-width: 500px) {
+    .createTask form {
+        flex-direction: column;
+    }
+
+    .createTask button {
+        width: 100%;
+    }
+}
