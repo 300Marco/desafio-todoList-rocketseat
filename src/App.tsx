@@ -11,9 +11,8 @@ export function App() {
       <Header />
 
       <div className={styles.wrapper}>
-        <AddTasks />
-
         <main>
+          {/* <AddTasks /> */}
           <Tasks />
         </main>
       </div>
