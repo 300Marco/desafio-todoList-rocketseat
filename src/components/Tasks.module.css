@@ -1,3 +1,68 @@
+.createTask {
+    margin-top: calc(0px - 1.5rem - 6px);
+    margin-bottom: 4rem;
+}
+
+.createTask form {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.createTask input {
+    background-color: var(--gray-500);
+    border: 1px solid var(--gray-700);
+    color: var(--gray-100);
+    width: 100%;
+    padding: 1rem;
+    border-radius: 8px;
+
+    transition: border 100ms;
+}
+
+.createTask input:hover {
+    border: 1px solid var(--purpleDark);
+}
+
+.createTask input:focus-within {
+    outline: transparent;
+    border:1px solid var(--purple);
+}
+
+.createTask button {
+    background-color: var(--blueDark);
+    color: var(--gray-100); 
+    font-size: 0.875rem;
+    border: none;
+    border-radius: 8px;
+    width: 5.625rem;
+    height: 3.25rem;
+    cursor: pointer;
+
+    transition: background-color 100ms;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.createTask button:hover {
+    background-color: var(--blue);
+}
+
+@media (max-width: 500px) {
+    .createTask form {
+        flex-direction: column;
+    }
+
+    .createTask button {
+        width: 100%;
+    }
+}
+
+
+
+/* ########## HEADER ########## */
 .header {
     margin-bottom: 1.5rem;
     
@@ -30,7 +95,7 @@
     font-size: 0.75rem;
 }
 
-/* ########## LISTA DE TAREFAS ########## */
+/* ########## TODO LIST ########## */
 .toDoList {
     border-top: 1px solid var(--gray-400);
     border-radius: 8px;
@@ -41,7 +106,7 @@
     flex-direction: column;
 }
 
-/* ##### - SEM TAREFAS */
+/* ##### - NO TASKS */
 .noTasks {
     height: 15.25rem;
     
@@ -61,7 +126,7 @@
     line-height: 1.4rem;
 }
 
-/* ##### - COM TAREFAS */
+/* ##### - WITH TASKS */
 .boxWithTasks {
     background-color: var(--gray-500);
     padding: 1rem;
@@ -69,7 +134,7 @@
     border-radius: 8px;
     
     display: flex;
-    align-items: start;
+    align-items: center;
     justify-content: space-between;
     gap: 0.75rem;
 }
@@ -93,7 +158,7 @@
 .infoTask input[type=checkbox] + label:before {
     position: absolute;
     left: 0;
-    top: 4px;
+    top: 2px;
 
     content: "\2713";
     border: 2px solid var(--blue);
@@ -138,7 +203,7 @@
     color: var(--gray-300);
 }
 
-/* ##### - LIXEIRA */
+/* ##### - TRASH */
 .boxWithTasks button {
     line-height: 0;
     background-color: transparent;
