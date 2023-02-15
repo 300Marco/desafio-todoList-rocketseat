@@ -110,7 +110,7 @@ export function Tasks() {
   }
 
   // function handleTestDelete(event: MouseEventHandler<HTMLButtonElement>) {
-  function handleTestDelete(event: React.MouseEvent<HTMLButtonElement>) {
+  function handleDeleteTask(event: React.MouseEvent<HTMLButtonElement>) {
       const tasksWithoutTheExcluded = tasks.filter(task => {
         return task.id !== parseInt(event.currentTarget.id)
       })
@@ -178,7 +178,7 @@ export function Tasks() {
                   </label>
                 </div>
 
-                <button id={`${task.id}`} onClick={handleTestDelete}>
+                <button id={`${task.id}`} onClick={handleDeleteTask}>
                   <Trash size={20} />
                 </button>
               </div>
