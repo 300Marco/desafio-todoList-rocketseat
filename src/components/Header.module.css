@@ -1,4 +1,16 @@
-header {
+.srOnly {
+    position: absolute;
+    height: 1px;
+    width: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.header {
     background-color: var(--gray-700);
     padding: 4.5rem 0 5rem 0;
     
@@ -7,6 +19,6 @@ header {
     justify-content: center;
 }
 
-header img {
+.header img {
     width: 7.875rem;
 }
