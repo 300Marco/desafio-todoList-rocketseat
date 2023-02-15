@@ -4,7 +4,7 @@ import clipboard from '../assets/clipboard.svg';
 import { Trash, PlusCircle } from 'phosphor-react';
 
 // import { ChangeEvent, useState } from 'react'; 
-import { ButtonHTMLAttributes, ChangeEvent, DOMAttributes, FormEvent, MouseEventHandler, PropsWithChildren, useState } from 'react'; 
+import { ButtonHTMLAttributes, ChangeEvent, DOMAttributes, FormEvent, InvalidEvent, MouseEventHandler, PropsWithChildren, useState } from 'react'; 
 
 // interface TasksProps {
 //   id: string;
@@ -75,6 +75,8 @@ export function Tasks() {
   //   // setNewTask(event.target.value);
   // }
   function handleNewComment(event: ChangeEvent<HTMLInputElement>) {
+    event.target.setCustomValidity('');
+
     setNewTask(event.target.value);
   }
 
@@ -121,6 +123,10 @@ export function Tasks() {
       setCompletedTasks(countOfCompletedTasks);
   }
 
+  function handleInvalidNewTask(event: InvalidEvent<HTMLInputElement>) {
+    event.target.setCustomValidity('Este campo não pode ficar vazio.');
+  }
+
   return(
     <div className={styles.tasks}>
       <div className={styles.createTask}>
@@ -132,6 +138,8 @@ export function Tasks() {
             value={newTask}
             placeholder='Adicione uma nova tarefa'
             onChange={handleNewComment}
+            onInvalid={handleInvalidNewTask}
+            required
           />
 
           <button>
@@ -148,8 +156,8 @@ export function Tasks() {
         </span>
 
         <span>
-          Concluídas 
-          <span>{completedTasks} de {taskCount}</span>
+          Concluídas
+          <span>{taskCount !== 0 ? `${completedTasks} de ${taskCount}` : taskCount}</span>
         </span>
       </div>
 
