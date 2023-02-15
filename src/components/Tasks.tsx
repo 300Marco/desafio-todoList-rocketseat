@@ -4,7 +4,7 @@ import clipboard from '../assets/clipboard.svg';
 import { Trash, PlusCircle } from 'phosphor-react';
 
 // import { ChangeEvent, useState } from 'react'; 
-import { ChangeEvent, DOMAttributes, FormEvent, MouseEventHandler, useState } from 'react'; 
+import { ButtonHTMLAttributes, ChangeEvent, DOMAttributes, FormEvent, MouseEventHandler, PropsWithChildren, useState } from 'react'; 
 
 // interface TasksProps {
 //   id: string;
@@ -108,7 +108,19 @@ export function Tasks() {
     const countOfCompletedTasks = checkTaskStatus.filter(status => status.status === true).length;
     setCompletedTasks(countOfCompletedTasks);
   }
-  
+
+  // function handleTestDelete(event: MouseEventHandler<HTMLButtonElement>) {
+  function handleTestDelete(event: React.MouseEvent<HTMLButtonElement>) {
+      const tasksWithoutTheExcluded = tasks.filter(task => {
+        return task.id !== parseInt(event.currentTarget.id)
+      })
+
+      const countOfCompletedTasks = tasksWithoutTheExcluded.filter(task => task.status === true).length;
+
+      setTasks(tasksWithoutTheExcluded);
+      setCompletedTasks(countOfCompletedTasks);
+  }
+
   return(
     <div className={styles.tasks}>
       <div className={styles.createTask}>
@@ -166,7 +178,7 @@ export function Tasks() {
                   </label>
                 </div>
 
-                <button>
+                <button id={`${task.id}`} onClick={handleTestDelete}>
                   <Trash size={20} />
                 </button>
               </div>
