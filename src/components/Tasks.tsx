@@ -154,12 +154,12 @@ export function Tasks() {
       </div>
 
       <div className={styles.toDoList}>
-        {/* <div className={styles.noTasks}>
+        <div className={taskCount !== 0 ? styles.hideNoTasks : styles.noTasks}>
           <img src={clipboard} alt="Imagem ilustrativa de um ícone de uma prancheta" />
 
           <span>Você ainda não tem tarefas cadastradas</span>
           <span>Crie tarefas e organize seus itens a fazer</span>
-        </div> */}
+        </div>
 
         {
           tasks.map(task => {

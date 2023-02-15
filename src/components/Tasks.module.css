@@ -116,6 +116,11 @@
     align-items: center;
 }
 
+.hideNoTasks  {
+    visibility: hidden;
+    height: 0;
+}
+
 .noTasks img {
     height: 3.625rem;
     margin-bottom: 1rem;
