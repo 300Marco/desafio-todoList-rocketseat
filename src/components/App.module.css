@@ -1,8 +1,7 @@
-/* ########## DIV PRINCIPAL ########## */
 .wrapper {
-    /* border: 1px solid red; */
     max-width: 46rem;
     margin: 0 auto;
+    padding: 0 0 1.5rem;
 }
 
 @media (max-width: 736px) {
