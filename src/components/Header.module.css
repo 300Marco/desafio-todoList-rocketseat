@@ -22,3 +22,9 @@
 .header img {
     width: 7.875rem;
 }
+
+@media (max-width: 736px) {
+    .header img {
+        width: 9.875rem;
+    }
+}
