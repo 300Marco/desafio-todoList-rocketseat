@@ -4,7 +4,7 @@ import clipboard from '../assets/clipboard.svg';
 import { Trash, PlusCircle } from 'phosphor-react';
 
 // import { ChangeEvent, useState } from 'react'; 
-import { ChangeEvent, FormEvent, useState } from 'react'; 
+import { ChangeEvent, DOMAttributes, FormEvent, MouseEventHandler, useState } from 'react'; 
 
 // interface TasksProps {
 //   id: string;
@@ -52,6 +52,10 @@ export function Tasks() {
   // const [newTask, setNewTask] = useState('');
   const [newTask, setNewTask] = useState('');
 
+  const [completedTasks, setCompletedTasks] = useState(0);
+  
+  const taskCount = tasks.length;
+
   // function handleCreateNewTask(event: FormEvent) {
   //   event.preventDefault();
   
@@ -74,6 +78,37 @@ export function Tasks() {
     setNewTask(event.target.value);
   }
 
+  function handleCheckTheMarkedTasks(event: ChangeEvent<HTMLInputElement>) {
+    // console.log(event.target.checked, event.target.id);
+
+    // preciso pegar o array de tasks
+    // feito isso, preciso realizar um map nestas tasks
+    // onde o ID corresponde a task, alterando o estado de checked, entre true e false
+
+    // const test = tasks.filter(task => {
+    //   console.log(task)
+    //   if(event.target.checked === true && parseInt(event.target.id) === task.id) {
+    //     return task
+    //   }
+    // });
+
+    // console.log(event.target, event.target.checked)
+
+    const checkTaskStatus = tasks.map(task => {
+      if(task.id == parseInt(event.target.id) && event.target.checked === true) {
+        task.status = true;
+      } else if(task.id == parseInt(event.target.id) && event.target.checked !== true) {
+        task.status = false;
+      }
+
+      return task;
+    });
+
+    // const testeContagem = test.filter(tes => tes.status === true).length;
+    const countOfCompletedTasks = checkTaskStatus.filter(status => status.status === true).length;
+    setCompletedTasks(countOfCompletedTasks);
+  }
+  
   return(
     <div className={styles.tasks}>
       <div className={styles.createTask}>
@@ -95,8 +130,15 @@ export function Tasks() {
       </div>
 
       <div className={styles.header}>
-        <span>Tarefas criadas <span>{0}</span></span>
-        <span>Concluídas <span>{0}</span></span>
+        <span>
+          Tarefas criadas 
+          <span>{taskCount}</span>
+        </span>
+
+        <span>
+          Concluídas 
+          <span>{completedTasks} de {taskCount}</span>
+        </span>
       </div>
 
       <div className={styles.toDoList}>
@@ -116,6 +158,7 @@ export function Tasks() {
                     id={`${task.id}`}
                     type="checkbox"  
                     className={styles.checkbox}
+                    onChange={handleCheckTheMarkedTasks}
                   />
                   
                   <label htmlFor={`${task.id}`}>
